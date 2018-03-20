@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>EasyTransition DEMO</title>
+</head>
+  <style>
+    #space_box{
+      height: 90vh;
+    }
+    .demo_box{
+      text-align: center;
+    }
+    div.demo_box{
+      margin: 50px auto;
+    }
+    p.demo_box{
+      text-align: left;
+      padding: 1em;
+    }
+    .demo_box.right{
+      text-align: right;
+    }
+    .easy_transition,.easy_transition2{
+      min-width: 30%;
+      height: 3em;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #lastone{
+      line-height: 1.2em;
+      height: 5em;
+    }
+    @media screen and (min-width:481px){
+      .demo_box{
+        font-size: 1.5rem;
+      }
+      p.demo_box{
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+<body>
+  <div id="space_box">
+    <p>please scroll to bottom.</p>
+  </div>
+  <h3>slide-in</h3>
+  <p class="demo_box">
+    <span class="easy_transition from_right">from_right<br>1000ms</span>
+  </p>
+  <p class="demo_box">
+    <span class="easy_transition2 from_right">from_right<br>2000ms</span>
+  </p>
+  <p class="demo_box right">
+    <span class="easy_transition from_left">from_left</span>
+  </p>
+  <pre><code>&lt;span class="easy_transition from_right"&gt;from_right&lt;/span&gt;
+&lt;span class="easy_transition from_left"&gt;from_left&lt;/span&gt;</code></pre>
+  <h3>fade &amp; zoom</h3>
+  <div class="demo_box">
+    <div class="easy_transition zoom">zoom</div>
+    <div class="easy_transition fade">fade</div>
+  </div>
+  <pre><code>&lt;div class="easy_transition zoom"&gt;zoom&lt;/div&gt;
+&lt;div class="easy_transition fade"&gt;fade&lt;/div&gt;</code></pre>
+  <h3>spin</h3>
+  <div class="demo_box">
+    <div class="easy_transition spin">spin</div>
+    <div class="easy_transition spinX">spinX</div>
+    <div class="easy_transition spinY">spinY</div>
+  </div>
+  <pre><code>&lt;div class="easy_transition spin"&gt;spin&lt;/div&gt;
+&lt;div class="easy_transition spinX"&gt;spinX&lt;/div&gt;
+&lt;div class="easy_transition spinY"&gt;spinY&lt;/div&gt;</code></pre>
+  <h3>composite</h3>
+  <div class="demo_box">
+    <div class="easy_transition zoom fade">zoom<br>fade</div>
+    <div class="easy_transition fade spin">fade<br>spin</div>
+    <div class="easy_transition spin zoom">spin<br>zoom</div>
+  </div>
+  <div class="demo_box">
+    <div class="easy_transition from_right zoom">from_right<br>zoom</div>
+    <div class="easy_transition from_left fade">from_left<br>fade</div>
+  </div>
+  <div class="demo_box">
+    <div class="easy_transition from_right spinY">from_right<br>spinY</div>
+    <div class="easy_transition from_left spinX">from_left<br>spinX</div>
+  </div>
+  <div class="demo_box">
+    <div id="lastone" class="easy_transition from_right zoom fade spin">from_right<br>zoom<br>fade<br>spin</div>
+  </div>
+  <pre><code>&lt;div class="easy_transition zoom fade"&gt;zoom&lt;br&gt;fade&lt;/div&gt;
+&lt;div class="easy_transition fade spin"&gt;fade&lt;br&gt;spin&lt;/div&gt;
+&lt;div class="easy_transition spin zoom"&gt;spin&lt;br&gt;zoom&lt;/div&gt;
+
+&lt;div class="easy_transition from_right zoom"&gt;from_right&lt;br&gt;zoom&lt;/div&gt;
+&lt;div class="easy_transition from_left fade"&gt;from_left&lt;br&gt;fade&lt;/div&gt;
+
+&lt;div class="easy_transition from_right spinY"&gt;from_right&lt;br&gt;spinY&lt;/div&gt;
+&lt;div class="easy_transition from_left spinX"&gt;from_left&lt;br&gt;spinX&lt;/div&gt;
+
+&lt;div class="easy_transition from_right zoom fade spin"&gt;from_right&lt;br&gt;zoom&lt;br&gt;fade&lt;br&gt;spin&lt;/div&gt;</code></pre>
+  <script src="EasyTransition.js"></script>
+  <script>
+    window.addEventListener('load',function(){
+      const ET = new EasyTransition();
+      const ET2 = new EasyTransition('easy_transition2',2000);
+      let els = document.querySelectorAll('.easy_transition');
+      els.forEach(function(el){
+        el.style.backgroundColor = random_hsl();
+      });
+      let els2 = document.querySelectorAll('.easy_transition2');
+      els2.forEach(function(el){
+        el.style.backgroundColor = random_hsl();
+      });
+      function random_hsl(){
+        let h = Math.floor(Math.random()*361);
+        let s = Math.floor(Math.random()*(90-70+1)) + 70;
+        let l = Math.floor(Math.random()*(90-70+1)) + 70;
+        return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+      }
+    },false);
+  </script>
+</body>
+</html>
