@@ -59,5 +59,5 @@ window.addEventListener('load',function(){
 },false);
 ```
 ## DEMO
-[DEMO FILE]()
+[DEMO FILE](https://github.com/motsu0/EasyTransition/blob/master/EasyTransition_DEMO.html)
 [DEMO PAGE](https://mo2nabe.com/?p=375)
